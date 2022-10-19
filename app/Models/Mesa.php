@@ -11,7 +11,12 @@ class Mesa extends Model
 
     protected $fillable = [
         'id',
+        'numero',
         'lugares',
     ];
+
+    public function comanda(){
+        return $this->hasOne(Comanda::class);
+    }
 
 }
