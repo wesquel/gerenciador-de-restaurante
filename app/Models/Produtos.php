@@ -15,4 +15,8 @@ class Produtos extends Model
         'valor',
     ];
 
+    public function comanda(){
+        return $this->belongsTo(Comanda::class);
+    }
+
 }
