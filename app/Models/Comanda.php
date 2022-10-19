@@ -13,4 +13,13 @@ class Comanda extends Model
       'id',
     ];
 
+    public function mesa(){
+        return $this->belongsTo(Mesa::class);
+    }
+
+    public function produtos(){
+        return $this->hasMany(Produtos::class);
+    }
+
+
 }
