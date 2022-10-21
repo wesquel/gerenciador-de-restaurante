@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\authenticated\DashboardController;
 use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,7 @@ Route::get('/', [indexController::class, 'create']);
 Route::get('/login', [indexController::class, 'create']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [indexController::class, 'create']);
+    Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
     Route::get('/dashboard/mesa/{id}', function ($id){
 
     })->whereNumber('id');
