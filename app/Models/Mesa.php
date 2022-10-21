@@ -13,6 +13,7 @@ class Mesa extends Model
         'id',
         'numero',
         'lugares',
+        'status'
     ];
 
     public function comanda(){
