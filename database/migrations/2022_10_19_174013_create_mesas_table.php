@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('numero');
             $table->integer('lugares');
+            $table->string('status');
             $table->timestamps();
         });
     }
