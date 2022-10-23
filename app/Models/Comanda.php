@@ -12,7 +12,8 @@ class Comanda extends Model
     protected $fillable = [
         'id',
         'mesa_id',
-        'valor'
+        'valor',
+        'qntdPessoas',
     ];
 
     public function mesa(){
