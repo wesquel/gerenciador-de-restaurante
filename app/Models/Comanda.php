@@ -10,16 +10,13 @@ class Comanda extends Model
     use HasFactory;
 
     protected $fillable = [
-      'id',
+        'id',
+        'mesa_id',
+        'valor'
     ];
 
     public function mesa(){
         return $this->belongsTo(Mesa::class);
     }
-
-    public function produtos(){
-        return $this->hasMany(Produtos::class);
-    }
-
 
 }
