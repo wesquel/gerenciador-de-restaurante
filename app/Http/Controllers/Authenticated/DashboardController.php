@@ -9,6 +9,7 @@ use App\Models\Produtos;
 use App\Models\ProdutosComanda;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,7 @@ class DashboardController extends Controller
     public function create(){
         $mesas = Mesa::all();
         $produtos = Produtos::all();
-        return view('dashboard', ['mesas' => $mesas, 'produtos' => $produtos]);
+        return view('dashboard', ['mesas' => $mesas, 'produtos' => $produtos, 'totalConta' => 0]);
     }
 
     public function mesaChanged($id){
@@ -51,16 +52,21 @@ class DashboardController extends Controller
     public function update(Request $request){
         $inputs = $request->all();
         $keys = array_keys($request->all());
-
         $produtosAtuais = $this->ultimaComanda($request->mesa_id);
+        for ($i = 2; $i < count($keys) - 1; $i++) {
+            $validator = Validator::make($request->all(), [
+                $keys[$i] => 'required|integer|min:0|max:999',
+            ]);
 
-        for ($i = 2; $i < count($keys) - 2; $i++) {
-            $produto = $produtosAtuais[$i - 2];
-            $produto->quantidade = $inputs[$keys[$i]];
-            $produto->update();
+            if (!$validator->fails()) {
+                $produto = $produtosAtuais[$i - 2];
+                $produto->quantidade = $inputs[$keys[$i]];
+                $produto->update();
+            }else{
+                break;
+            }
         }
-
-        return redirect('dashboard');
+        return redirect('dashboard')->withErrors($validator);
     }
 
     public function ultimaComanda($id){

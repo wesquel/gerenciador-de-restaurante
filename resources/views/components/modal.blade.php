@@ -47,12 +47,16 @@
                                                 <input name="inputQtndMesa{{$id}}produto{{$produto->id}}" type="number" value="{{$produtoComanda->quantidade}}"
                                                        class="form-control qntInput heightButton"/>
                                             </div>
+                                            @error("inputQtndMesa{{$id}}produto{{$produto->id}}")
+                                                <div class="alert alert-danger">{{ "erros" }}</div>
+                                            @enderror
                                         </td>
                                         <td>
                                             <p>R$ {{$produto->valor}}</p>
                                         </td>
                                         <td>
                                             <p>R$ {{$produto->valor * $produtoComanda->quantidade}}</p>
+                                            {{$somaTotal($produto->valor * $produtoComanda->quantidade)}}
                                         </td>
                                     </tr>
                                 @endif
@@ -62,7 +66,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>R$ 0.00</td>
+                            <td>R$ {{$totalConta = $getTotal()}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -74,7 +78,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    var quantidadeProdutosInput = dom.getElementById()
-</script>

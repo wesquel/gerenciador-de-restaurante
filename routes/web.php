@@ -20,8 +20,9 @@ Route::get('/', [indexController::class, 'create']);
 Route::get('/login', [indexController::class, 'create']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
-    Route::put('/dashboard', [DashboardController::class, 'update'])->name('update.produtos');
+Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
+Route::get('/dashboard/abrirMesa', [DashboardController::class, 'create'])->name('abrirMesa');
+Route::put('/dashboard', [DashboardController::class, 'update'])->name('update.produtos');
 
     Route::get('/dashboard/mesa/{id}', function ($id){
         $controller = new DashboardController();
