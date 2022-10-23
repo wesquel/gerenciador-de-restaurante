@@ -9,7 +9,6 @@ class indexController extends Controller
 {
     //
     public function create(){
-
         return view('welcome');
     }
 }

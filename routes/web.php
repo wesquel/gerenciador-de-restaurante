@@ -21,9 +21,12 @@ Route::get('/login', [indexController::class, 'create']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
-    Route::get('/dashboard/mesa/{id}', function ($id){
+    Route::put('/dashboard', [DashboardController::class, 'update'])->name('update.produtos');
 
-    })->whereNumber('id');
+    Route::get('/dashboard/mesa/{id}', function ($id){
+        $controller = new DashboardController();
+        return $controller->mesaChanged($id);
+    })->name('mesaChanged');
 });
 
 Route::middleware('auth:admin')->group(function () {
