@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('comandas', function (Blueprint $table) {
             $table->id();
             $table->foreignId("mesa_id")->constrained()->onDelete('cascade');
-            $table->foreignId("produto_id")->constrained()->onDelete('cascade');
+            $table->integer('valor');
             $table->timestamps();
         });
     }
