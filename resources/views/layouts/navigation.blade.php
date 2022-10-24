@@ -15,14 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @auth('admin')
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+{{--                    @auth('admin')--}}
+                        <x-nav-link :href="route('caixa')" :active="request()->routeIs('caixa')">
                             {{ __('Caixa') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('movimentacoes')" :active="request()->routeIs('movimentacoes')">
                             {{ __('Movimentações') }}
                         </x-nav-link>
-                    @endauth
+{{--                    @endauth--}}
 
                 </div>
             </div>

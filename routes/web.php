@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\caixaController;
+use App\Http\Controllers\Admin\movimentacoesController;
 use App\Http\Controllers\authenticated\DashboardController;
 use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
@@ -26,15 +28,19 @@ Route::put('/dashboard', [DashboardController::class, 'update'])->name('update.p
 Route::put('/dashboard/atualizarQntdPessoas', [DashboardController::class, 'atualizarQntdPessoas'])->name('update.pessoas');
 Route::put('/dashboard/fecharConta', [DashboardController::class, 'fecharConta'])->name('fechar.conta');
 
-Route::get('/dashboard/mesa/{id}', function ($id){
+Route::get('/dashboard/caixa', [caixaController::class, 'create'])->name('caixa');
+Route::get('/dashboard/movimentacoes', [movimentacoesController::class, 'create'])->name('movimentacoes');
+
+
+    Route::get('/dashboard/mesa/{id}', function ($id){
         $controller = new DashboardController();
         return $controller->mesaChanged($id);
     })->name('mesaChanged');
 });
 
-Route::middleware('auth:admin')->group(function () {
-    Route::get('/dashboard/caixa', [indexController::class, 'create']);
-    Route::get('/dashboard/movimentacao', [indexController::class, 'create']);
-});
+//Route::middleware('auth:admin')->group(function () {
+//    Route::get('/dashboard/caixa', [indexController::class, 'create']);
+//    Route::get('/dashboard/movimentacao', [indexController::class, 'create']);
+//});
 
 require __DIR__.'/auth.php';
