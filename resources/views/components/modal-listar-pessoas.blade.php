@@ -17,10 +17,10 @@
                                 <p>Forma de pagamento da pessoa {{$i+1}}:</p>
                             @endif
                             <select name="mesa{{$id}}Pessoa{{$i}}" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                <option value="Dinheiro">Dinheiro</option>
-                                <option value="Débito">Débito</option>
-                                <option value="Crédito">Crédito</option>
-                                <option value="Pix">Pix</option>
+                                <option value="dinheiro">Dinheiro</option>
+                                <option value="debito">Débito</option>
+                                <option value="credito">Crédito</option>
+                                <option value="pix">Pix</option>
                             </select>
                         </div>
                     @endfor

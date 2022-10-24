@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
         $mesa = Mesa::All();
         if (count($mesa) == 0){
-            for ($i = 0; $i < 4; $i++){
+            for ($i = 0; $i < 5; $i++){
                 $mesa = Mesa::create([
                     'id' => $i+1,
                     'numero' => $i+1,
