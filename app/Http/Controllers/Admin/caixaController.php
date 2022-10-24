@@ -14,7 +14,7 @@ class caixaController extends Controller
 
     public function create(){
         if (Auth::user()->isAdmin != 1){
-            return route('dashboard');
+            return redirect(route('dashboard'));
         }
         $comandas = Comanda::all();
 

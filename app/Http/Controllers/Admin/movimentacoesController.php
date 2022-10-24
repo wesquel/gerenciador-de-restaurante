@@ -7,11 +7,15 @@ use App\Models\Comanda;
 use App\Models\Produtos;
 use App\Models\ProdutosComanda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class movimentacoesController extends Controller
 {
     //
     public function create(){
+        if (Auth::user()->isAdmin != 1){
+            return redirect(route('dashboard'));
+        }
         $produtos = $this->createArray();
 
         return view('movimentacoes', ['produtos' => $produtos]);
