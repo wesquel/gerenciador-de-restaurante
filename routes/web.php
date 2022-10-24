@@ -23,8 +23,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
 Route::get('/dashboard/abrirMesa', [DashboardController::class, 'create'])->name('abrirMesa');
 Route::put('/dashboard', [DashboardController::class, 'update'])->name('update.produtos');
+Route::put('/dashboard/atualizarQntdPessoas', [DashboardController::class, 'atualizarQntdPessoas'])->name('update.pessoas');
 
-    Route::get('/dashboard/mesa/{id}', function ($id){
+Route::get('/dashboard/mesa/{id}', function ($id){
         $controller = new DashboardController();
         return $controller->mesaChanged($id);
     })->name('mesaChanged');

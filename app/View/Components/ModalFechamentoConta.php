@@ -24,7 +24,8 @@ class ModalFechamentoConta extends Component
         $this->id = $id;
         $this->idComanda = $this->ultimaComadaMesa();
         $this->valorTotal = $this->valorComanda();
-        $this->quantidadePessoas = 1;
+        $comanda = Comanda::findOrFail($this->idComanda);
+        $this->quantidadePessoas = $comanda->qntdPessoas;
 
     }
 
@@ -36,10 +37,6 @@ class ModalFechamentoConta extends Component
     public function valorComanda(){
         $comanda = Comanda::findOrFail($this->idComanda);
         return $comanda->valor;
-    }
-
-    public function recalcularValor(){
-
     }
 
     /**
