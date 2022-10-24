@@ -33,7 +33,6 @@
                                 <td>{{$mesa->id}}</td>
                                 <td>{{$mesa->lugares}}</td>
                                 <td class="@if($mesa->status == "Ocupado")text-danger @endif text-success">{{$mesa->status}}</td>
-{{--                                @if($mesa->status == "Ocupado")--}}
                                 <td>
                                         @if($mesa->status == "Disponivel")
                                         <a href="{{route('mesaChanged',$mesa->id)}}">
@@ -41,10 +40,10 @@
                                         @else
                                         <button class="btn btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#staticBackdrop{{$mesa->id}}">Produtos</button>
-{{--                                        <a href="{{route('mesaChanged',$mesa->id)}}">--}}
-                                            <button class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#modalFecharConta{{$mesa->id}}">Fechar Conta</button>
-{{--                                            </a>--}}
+                                        <button class="btn btn-info" data-bs-toggle="modal"
+                                                data-bs-target="#modalFecharConta{{$mesa->id}}">Dividir Conta</button>
+                                        <button class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#listarPessoasModal{{$mesa->id}}">Pagamento</button>
                                         @endif
                                 </td>
                             </tr>

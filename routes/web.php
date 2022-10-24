@@ -24,6 +24,7 @@ Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboar
 Route::get('/dashboard/abrirMesa', [DashboardController::class, 'create'])->name('abrirMesa');
 Route::put('/dashboard', [DashboardController::class, 'update'])->name('update.produtos');
 Route::put('/dashboard/atualizarQntdPessoas', [DashboardController::class, 'atualizarQntdPessoas'])->name('update.pessoas');
+Route::put('/dashboard/fecharConta', [DashboardController::class, 'fecharConta'])->name('fechar.conta');
 
 Route::get('/dashboard/mesa/{id}', function ($id){
         $controller = new DashboardController();

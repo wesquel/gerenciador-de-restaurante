@@ -38,6 +38,7 @@ class DashboardController extends Controller
                     'mesa_id' => $i+1,
                     'valor' => 0,
                     'qntdPessoas' => 1,
+                    'formaDePagameto' => ''
                 ]);
 
                 event(new Registered($mesa));
@@ -74,6 +75,7 @@ class DashboardController extends Controller
                 'mesa_id' => $mesa->id,
                 'valor' => 0,
                 'qntdPessoas' => 1,
+                'formaDePagameto' => ''
             ]);
             event(new Registered($comanda));
 
@@ -109,7 +111,7 @@ class DashboardController extends Controller
     public function update(Request $request){
         $inputs = $request->all();
         $keys = array_keys($request->all());
-        $produtosAtuais = $this->ultimaComanda($request->mesa_id);
+        $produtosAtuais = $this->produtosComanda($request->mesa_id);
         for ($i = 2; $i < count($keys) - 1; $i++) {
             $validator = Validator::make($request->all(), [
                 $keys[$i] => 'required|integer|min:0|max:999',
@@ -131,11 +133,25 @@ class DashboardController extends Controller
         return $comandaid[count($comandaid) - 1]['id'];
     }
 
-    public function ultimaComanda($id){
+    public function produtosComanda($id){
         $comandaid = Comanda::where('mesa_id', $id)->get();
         $comandaid = $comandaid[count($comandaid) - 1]['id'];
         $produtosAtuais = ProdutosComanda::where('comanda_id', $comandaid)->get();
         return $produtosAtuais;
+    }
+
+    public function fecharConta(Request $request){
+        $inputs = $request->all();
+        $keys = array_keys($inputs);
+        $array = array();
+        for ($i = 2; $i < $request->qntdPessoas+2; $i++){
+            $array[] = $inputs[$keys[$i]];
+        }
+        $comandaid = $this->ultimaComadaMesa($request->mesa_id);
+        $comanda = Comanda::findOrFail($comandaid);
+        $comanda->formaDePagameto = $array;
+        $comanda->update();
+        return $this->mesaChanged($request->mesa_id);
     }
 
 }

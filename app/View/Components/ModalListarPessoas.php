@@ -13,12 +13,15 @@ class ModalListarPessoas extends Component
      */
 
     public $id;
-    public $idComanda;
+    public $qntdPessoas;
+    public $valorTotal;
 
-    public function __construct($id)
+    public function __construct($id, $qntdPessoas, $valorTotal)
     {
         //
-        $id = 0;
+        $this->id = $id;
+        $this->qntdPessoas = $qntdPessoas;
+        $this->valorTotal = $valorTotal;
     }
 
     /**

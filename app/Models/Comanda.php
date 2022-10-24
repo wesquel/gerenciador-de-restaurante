@@ -14,6 +14,11 @@ class Comanda extends Model
         'mesa_id',
         'valor',
         'qntdPessoas',
+        'formaDePagameto'
+    ];
+
+    protected $casts = [
+        'formaDePagameto' => 'array',
     ];
 
     public function mesa(){

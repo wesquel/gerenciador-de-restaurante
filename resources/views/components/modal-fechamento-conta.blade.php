@@ -35,13 +35,14 @@
                 <p id="resultadoComanda{{$id}}" class="total-p">Total por Pessoa: R$ {{$valorTotal/$quantidadePessoas}}</p>
                 <p id="resultadoComanda{{$id}}" class="total-p">Total: R$ {{$valorTotal}}</p>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Ir para o Pagemento</button>
+                    <button type="submit" class="btn btn-warning">Atualizar Conta</button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
+
+<x-modal-listar-pessoas qntdPessoas="{{$quantidadePessoas}}" :id="$id" :valorTotal="$valorTotal"/>
 
 <script>
     const calc{{$id}} = document.getElementById('calcButton{{$id}}');
@@ -53,4 +54,13 @@
         comandaResultado{{$id}}.innerHTML = "Total por Pessoa: R$ "+({{$valorTotal}}/input{{$id}}.value).toFixed(2)
         console.log(comandaResultado{{$id}})
     }
+</script>
+
+<script>
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
 </script>
