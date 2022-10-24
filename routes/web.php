@@ -38,9 +38,4 @@ Route::get('/dashboard/movimentacoes', [movimentacoesController::class, 'create'
     })->name('mesaChanged');
 });
 
-//Route::middleware('auth:admin')->group(function () {
-//    Route::get('/dashboard/caixa', [indexController::class, 'create']);
-//    Route::get('/dashboard/movimentacao', [indexController::class, 'create']);
-//});
-
 require __DIR__.'/auth.php';

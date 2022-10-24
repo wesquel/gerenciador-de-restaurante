@@ -15,14 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-{{--                    @auth('admin')--}}
+                    @if(\Illuminate\Support\Facades\Auth::user()->isAdmin == 1)
                         <x-nav-link :href="route('caixa')" :active="request()->routeIs('caixa')">
                             {{ __('Caixa') }}
                         </x-nav-link>
                         <x-nav-link :href="route('movimentacoes')" :active="request()->routeIs('movimentacoes')">
                             {{ __('Movimentações') }}
                         </x-nav-link>
-{{--                    @endauth--}}
+                    @endif
+
 
                 </div>
             </div>
