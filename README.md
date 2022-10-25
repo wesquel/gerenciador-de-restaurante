@@ -36,6 +36,8 @@ Ligue o servidor.
 
 **Back-end:** PHP, Laravel.
 
+## Banco de dados
+![App Screenshot](https://images2.imgbox.com/2a/ab/eTIjG4l1_o.png)
 
 ## Screenshots
 #### Tela inicial
