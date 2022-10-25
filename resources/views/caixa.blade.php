@@ -5,6 +5,18 @@
         </h2>
     </x-slot>
 
+    <form method="POST" action="{{route('caixa.put')}}">
+        @csrf
+        @method('PUT')
+        <div style="margin: 35px 35px -20px 35px;" class="text-center">
+            <select name="filtro" class="form-select" aria-label="Default select example">
+                <option value="tudo">Tudo</option>
+                <option value="mesa">Mesas</option>
+            </select>
+            <button style="margin-top: 1em" class="btn btn-primary">Filtrar</button>
+        </div>
+    </form>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -28,11 +40,11 @@
                         </thead>
                         <tbody>
                         @foreach($comandas as $comanda)
-                            @if ($comanda->valor != 0)
+                            @if ($comanda['valor'] != 0)
                             <tr>
-                                <td>Mesa {{$comanda->mesa_id}}</td>
-                                <td>R$ {{$comanda->valor}}</td>
-                                <td>{{$comanda->updated_at}}</td>
+                                <td>Mesa {{$comanda['mesa_id']}}</td>
+                                <td>R$ {{$comanda['valor']}}</td>
+                                <td>{{$comanda['updated_at']}}</td>
                             </tr>
                             @endif
                         @endforeach

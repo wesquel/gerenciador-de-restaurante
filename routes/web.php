@@ -29,6 +29,7 @@ Route::put('/dashboard/atualizarQntdPessoas', [DashboardController::class, 'atua
 Route::put('/dashboard/fecharConta', [DashboardController::class, 'fecharConta'])->name('fechar.conta');
 
 Route::get('/dashboard/caixa', [caixaController::class, 'create'])->name('caixa');
+Route::put('/dashboard/caixa', [caixaController::class, 'create'])->name('caixa.put');
 Route::get('/dashboard/movimentacoes', [movimentacoesController::class, 'create'])->name('movimentacoes');
 
 
