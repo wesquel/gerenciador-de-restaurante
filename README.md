@@ -32,7 +32,7 @@ Ligue o servidor.
 ```
 ## Stack utilizada
 
-**Front-end:** Blade, Boostrap.
+**Front-end:** Blade, Bootstrap.
 
 **Back-end:** PHP, Laravel.
 
