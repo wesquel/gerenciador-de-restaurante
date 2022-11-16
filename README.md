@@ -62,7 +62,7 @@ Ligue o servidor.
 ![App Screenshot](https://images2.imgbox.com/a0/54/APSUiHjQ_o.png)
 
 
-## Autores
+## Autor
 
 - [@Weslley Addson](https://github.com/wesquel/)
 
